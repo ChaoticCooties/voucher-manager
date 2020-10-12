@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 class Voucher(models.Model):
+    v_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     code = models.CharField(max_length=50, unique=True)
     percent_off = models.PositiveSmallIntegerField(

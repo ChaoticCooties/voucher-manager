@@ -10,4 +10,4 @@ class VoucherViewSet(viewsets.ModelViewSet):
         permissions.AllowAny
     ]
     serializer_class = VoucherSerializer
-    http_method_names = ['get', 'post', 'put', 'patch', 'delete']
+    http_method_names = ['get', 'post', 'put', 'patch']
