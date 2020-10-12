@@ -1,13 +1,14 @@
 import React, { useEffect, Fragment } from 'react';
 
+import 'materialize-css/dist/css/materialize.min.css';
+import M from 'materialize-css';
+
 import Header from './layout/Header';
-import Vouchers from './vouchers/VoucherSearch';
+import VoucherSearch from './vouchers/VoucherSearch';
+import Vouchers from './vouchers/Vouchers';
 
 import { Provider } from 'react-redux';
 import store from '../store';
-
-import 'materialize-css/dist/css/materialize.min.css';
-import M from 'materialize-css';
 
 const App = () => {
     useEffect(() => {
@@ -20,6 +21,7 @@ const App = () => {
             <Fragment>
                 <Header />
                 <div className='container'>
+                    <VoucherSearch />
                     <Vouchers />
                 </div>
             </Fragment>

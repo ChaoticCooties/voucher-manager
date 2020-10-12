@@ -1,30 +1,25 @@
-import { GET_VOUCHER, VOUCHER_ERROR, SET_LOADING } from './types';
+import axios from 'axios';
+import { GET_VOUCHER, VOUCHER_ERROR, LOADING } from './types';
 
 // Fetch voucher from given code with api call
-export const getVoucher = (code) => async (dispatch) => {
-    try {
-        // Toggle loader
-        setLoading();
+export const getVoucher = (code) => (dispatch) => {
+    dispatch({
+        type: LOADING,
+    });
 
-        // Fetch from api and return json
-        const res = await fetch(`/api/vouchers/${code}`);
-        const data = await res.json();
-
-        dispatch({
-            type: GET_VOUCHER,
-            payload: data,
+    // HTTP fetch from api
+    axios
+        .get(`api/vouchers/${code}`)
+        .then((res) => {
+            dispatch({
+                type: GET_VOUCHER,
+                payload: res.data,
+            });
+        })
+        .catch((err) => {
+            dispatch({
+                type: VOUCHER_ERROR,
+                payload: err.response.data,
+            });
         });
-    } catch (err) {
-        dispatch({
-            type: VOUCHER_ERROR,
-            payload: err.response.statusText,
-        });
-    }
-};
-
-// Set loading to true
-export const setLoading = () => {
-    return {
-        type: SET_LOADING,
-    };
 };

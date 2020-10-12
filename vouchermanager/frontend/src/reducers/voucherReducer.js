@@ -1,4 +1,9 @@
-import { GET_VOUCHER, VOUCHER_ERROR, SET_LOADING } from '../actions/types';
+import {
+    GET_VOUCHER,
+    VOUCHER_ERROR,
+    THROW_ERROR,
+    LOADING,
+} from '../actions/types';
 
 const initialState = {
     voucher: null,
@@ -11,18 +16,25 @@ export default (state = initialState, action) => {
         case GET_VOUCHER:
             return {
                 ...state,
-                vouchers: action.payload,
+                voucher: action.payload,
                 loading: false,
             };
         case VOUCHER_ERROR:
             return {
                 ...state,
                 error: action.payload,
+                voucher: null,
+                loading: false,
             };
-        case SET_LOADING:
+        case LOADING:
             return {
                 ...state,
                 loading: true,
+            };
+        case THROW_ERROR:
+            return {
+                ...state,
+                error: null,
             };
         default:
             return state;

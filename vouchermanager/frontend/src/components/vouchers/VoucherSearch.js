@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getVoucher } from '../../actions/vouchers';
+import Preloader from '../layout/Preloader';
 
-const VoucherSearch = ({ getVoucher }) => {
+const VoucherSearch = ({ voucher: { loading, error }, getVoucher }) => {
     const [code, setCode] = useState('');
+
+    useEffect(() => {
+        if (error !== null) {
+            M.toast({ html: error.detail });
+        }
+    }, [error]);
 
     const onSubmit = () => {
         if (code === '') {
@@ -12,8 +19,20 @@ const VoucherSearch = ({ getVoucher }) => {
         } else {
             // Fetch voucher
             getVoucher(code);
+
+            // Reset field
+            setCode('');
         }
     };
+
+    // Fetching...
+    if (loading) {
+        return (
+            <div className='center' style={{ padding: '10em' }}>
+                <Preloader />
+            </div>
+        );
+    }
 
     return (
         <div className='row' style={{ padding: '5em' }}>
@@ -40,6 +59,7 @@ const VoucherSearch = ({ getVoucher }) => {
 };
 
 VoucherSearch.propTypes = {
+    voucher: PropTypes.object.isRequired,
     getVoucher: PropTypes.func.isRequired,
 };
 
