@@ -8,34 +8,34 @@ const Vouchers = ({ voucher: { voucher, loading } }) => {
         return <Preloader />;
     }
 
-    if (voucher !== null) {
-        return (
-            <Fragment>
-                <table className='striped centered'>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Discount</th>
-                            <th>Uses Left</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{voucher.name}</td>
-                            <td>
-                                {voucher.percent_off
-                                    ? voucher.percent_off
-                                    : voucher.flat_off}
-                            </td>
-                            <td>{voucher.remaining}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </Fragment>
-        );
+    if (voucher === null) {
+        return <Fragment></Fragment>;
     }
 
-    return <Fragment></Fragment>;
+    return (
+        <Fragment>
+            <table className='striped centered'>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Discount</th>
+                        <th>Uses Left</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{voucher.name}</td>
+                        <td>
+                            {voucher.percent_off
+                                ? voucher.percent_off + '%'
+                                : 'RM ' + voucher.flat_off}
+                        </td>
+                        <td>{voucher.remaining}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </Fragment>
+    );
 };
 
 Vouchers.propTypes = {
