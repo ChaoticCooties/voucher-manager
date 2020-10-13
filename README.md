@@ -31,6 +31,7 @@ In package.json, there are two scripts, dev & build. Use whichever suits you bes
 npm run dev/build
 ```
 
+You may need to build your own `.babelrc` if you wish to modify the React app. Else skip the npm part.
 This builds the React frontend as well as sets up a watcher if you're using the dev option.
 
 In the voucherapp directory, you can set up a Django server by running
