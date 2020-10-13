@@ -9,7 +9,7 @@ const VoucherSearch = ({ voucher: { loading, error }, getVoucher }) => {
 
     useEffect(() => {
         if (error !== null) {
-            M.toast({ html: error.detail });
+            M.toast({ html: error.message });
         }
     }, [error]);
 
