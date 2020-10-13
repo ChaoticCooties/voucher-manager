@@ -4,8 +4,8 @@
     "description": "Voucher management web app",
     "main": "index.js",
     "scripts": {
-        "dev": "webpack --mode development --watch ./vouchermanager/frontend/src/index.js --output ./vouchermanager/frontend/static/frontend/main.js",
-        "build": "webpack --mode production ./vouchermanager/frontend/src/index.js --output ./vouchermanager/frontend/static/frontend/main.js"
+        "dev": "webpack --mode development --watch ./voucherapp/frontend/src/index.js --output ./voucherapp/frontend/static/frontend/main.js",
+        "build": "webpack --mode production ./voucherapp/frontend/src/index.js --output ./voucherapp/frontend/static/frontend/main.js"
     },
     "keywords": [],
     "author": "Chegne Eu Joe <joe@repsports.org> (http://cooties.io/)",
