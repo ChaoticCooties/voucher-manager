@@ -55,11 +55,3 @@ python3 manage.py test vouchers.tests.VoucherTestCase.{test_case_name}
 ```
 
 Currently, there are only 2 test cases.
-
-## Very IMPORTANT
-
--   Replace the secret key in settings.py and turn debug off if applicable.
--   There may be a flicker when entering the discount code on a local build. This is just a loading spinner and not an unintended bug.
--   If you're developing on top of this, npm might notice you of an intermediate vulnerability. However, the XSS vulnerability only affects `tooltip` and `autocomplete`
-    components of materialize-css, which the app does not use. As of now, there are now security updates yet but do keep an eye on this as the developers are currently
-    fixing this according to materialize-css' issue tracker.
